@@ -18,17 +18,31 @@ async function checkweather(city) {
         document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
         document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
 
+
+        console.log(data.weather);
+
+
         // Change the weather icon based on the weather condition
         if (data.weather[0].main === "Clouds") {
-            weathericon.src = "./images/clouds.jpg";
-        } else if (data.weather[0].main === "Clear") {
-            weathericon.src = "./images/clear_sky.png";
+            weathericon.src = "clouds.jpg";
+        } else if (data.weather[0].main === "clear") {
+            console.log(data.weather[0].main);  // Log to see exact value
+
+           weathericon.src = "clear_sky.jpg";
         } else if (data.weather[0].main === "Rain") {
-            weathericon.src = "./images/rain.jpg"; // Corrected filename
+            weathericon.src = "rain.jpg"; // Corrected filename
         } else if (data.weather[0].main === "Drizzle") {
-            weathericon.src = "./images/drizzle.jpg"; // Corrected filename
+            console.log(data.weather[0].main);  // Log to see exact value
+
+            //weathericon.src = "drizzle.jpg"; // Corrected filename
+        } else if (data.weather[0].main === "Mist") {
+            console.log(data.weather[0].main); 
+            weathericon.src = "mist.avif";
+        }  else if (data.weather[0].main === "Haze") {
+                console.log(data.weather[0].main); 
+                weathericon.src = "haze.png";
         } else {
-            weathericon.src = "./images/default_weather.png"; // Fallback image
+            weathericon.src = "default_weather.png"; // Fallback image
         }
 
         disp.style.display = "block";
@@ -46,3 +60,4 @@ searchbtn.addEventListener("click", () => {
         alert("Please select a city"); // Alert if no city is selected
     }
 });
+
